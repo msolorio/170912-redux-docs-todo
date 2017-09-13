@@ -1,17 +1,31 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTodo } from '../actions';
+import { addTodo, changeInput } from '../actions';
 
 export function AddTodoForm(props) {
+
   function handleClick() {
     props.dispatch(addTodo(
-      'todo item',
+      props.inputVal,
       props.nextTodoId
     ));
+
+    props.dispatch(changeInput(''));
+  }
+
+  function handleInputChange(e) {
+    const newTodoText = e.target.value.trim();
+    props.dispatch(changeInput(newTodoText));
   }
 
   return (
     <div className="AddTodo">
+      <label>
+        Todo Text:&nbsp;
+        <input placeholder="walk the dog"
+          value={props.inputVal}
+          onChange={handleInputChange}/>
+      </label>
       <button onClick={handleClick}>click here</button>
     </div>
   );

@@ -1,6 +1,7 @@
 const initialState = {
   todos: [],
-  nextTodoId: 0
+  nextTodoId: 0,
+  inputVal: ''
 };
 
 export default function todoReducer(state=initialState, action) {
@@ -17,6 +18,11 @@ export default function todoReducer(state=initialState, action) {
           }
         ],
         nextTodoId: state.nextTodoId + 1
+      });
+    case 'CHANGE_INPUT':
+      console.log('changeInput action hits reducer');
+      return Object.assign({}, state, {
+        inputVal: action.inputVal
       });
     default:
       return state;

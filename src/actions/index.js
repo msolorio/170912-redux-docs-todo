@@ -3,3 +3,8 @@ export const addTodo = (todoText, todoId) => ({
   todoText,
   todoId
 });
+
+export const changeInput = (inputVal) => ({
+  type: 'CHANGE_INPUT',
+  inputVal
+});
