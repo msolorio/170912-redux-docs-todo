@@ -1,9 +1,23 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-export default function TodoList(props) {
+export function TodoList(props) {
+  const list = props.todos.map((todo, index) => {
+    return (
+      <div className="todo" key={index}>
+        <input type="checkbox" />
+        <div className="todoText">{todo.todoText}</div>
+      </div>
+    );
+  });
+
   return (
-    <div className="TodoList">
-      from TodoList component
-    </div>
+    <ul className="TodoList">
+      {list}
+    </ul>
   );
 };
+
+const mapStateToProps = (state) => ({...state});
+
+export default connect(mapStateToProps)(TodoList);
