@@ -1,7 +1,8 @@
 const initialState = {
   todos: [],
   nextTodoId: 0,
-  inputVal: ''
+  inputVal: '',
+  visibilityFilter: 'ALL'
 };
 
 export default function todoReducer(state=initialState, action) {
@@ -45,6 +46,11 @@ export default function todoReducer(state=initialState, action) {
         })
       });
 
+    case 'SET_VISIBILITY_FILTER':
+      console.log('SET_VISIBILITY_FILTER action hit reducer');
+      return Object.assign({}, state, {
+        visibilityFilter: action.filterName
+      });
     default:
       return state;
   }

@@ -18,3 +18,8 @@ export const removeTodo = (todoId) => ({
   type: 'REMOVE_TODO',
   todoId
 });
+
+export const setVisibilityFilter = (filterName) => ({
+  type: 'SET_VISIBILITY_FILTER',
+  filterName
+});

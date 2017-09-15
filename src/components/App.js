@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AddTodoForm from '../containers/AddTodoForm';
 import TodoList from '../containers/TodoList';
+import FilterBar from './FilterBar';
 
 class App extends Component {
   render() {
@@ -8,6 +9,7 @@ class App extends Component {
       <div className="App">
         <AddTodoForm />
         <TodoList />
+        <FilterBar />
       </div>
     );
   }

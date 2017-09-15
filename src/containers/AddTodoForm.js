@@ -30,6 +30,9 @@ export function AddTodoForm(props) {
   );
 };
 
-const mapStateToProps = (state) => ({...state});
+const mapStateToProps = (state) => ({
+  inputVal: state.inputVal,
+  nextTodoId: state.nextTodoId
+});
 
 export default connect(mapStateToProps)(AddTodoForm);
