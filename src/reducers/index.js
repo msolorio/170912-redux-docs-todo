@@ -7,7 +7,7 @@ const initialState = {
 export default function todoReducer(state=initialState, action) {
   switch(action.type) {
     case 'ADD_TODO':
-      console.log('addTodo action hits reducer');
+      console.log('ADD_TODO action hits reducer');
       return Object.assign({}, state, {
         todos: [
           ...state.todos,
@@ -19,11 +19,32 @@ export default function todoReducer(state=initialState, action) {
         ],
         nextTodoId: state.nextTodoId + 1
       });
+
     case 'CHANGE_INPUT':
-      console.log('changeInput action hits reducer');
+      console.log('CHANGE_INPUT action hits reducer');
       return Object.assign({}, state, {
         inputVal: action.inputVal
       });
+
+    case 'CLICK_CHECKBOX':
+      console.log('CLICK_CHECKBOX action hit reducer');
+      return Object.assign({}, state, {
+        todos: state.todos.map((todo) => {
+          if (todo.todoId === action.todoId) {
+            return {...todo, completed: !todo.completed}
+          }
+          return todo;
+        })
+      });
+
+    case 'REMOVE_TODO':
+      console.log('REMOVE_TODO action hit reducer');
+      return Object.assign({}, state, {
+        todos: state.todos.filter((todo) => {
+          return (todo.todoId !== action.todoId);
+        })
+      });
+
     default:
       return state;
   }

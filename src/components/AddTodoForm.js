@@ -14,8 +14,7 @@ export function AddTodoForm(props) {
   }
 
   function handleInputChange(e) {
-    const newTodoText = e.target.value.trim();
-    props.dispatch(changeInput(newTodoText));
+    props.dispatch(changeInput(e.target.value));
   }
 
   return (
